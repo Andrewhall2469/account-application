@@ -57,7 +57,7 @@ public class AccountRepositoryTest {
 	public void createAccountTest()
 	{
 		String expected = repo.createAccount("{\"firstName\":\"Peter\",\"secondName\":\"Pan\",\"id\":1001}");
-		String actual = "Account added";
+		String actual = "{\"message\":\"account added\"}";
 		Assert.assertEquals(actual, expected);
 	}
 	
@@ -65,7 +65,7 @@ public class AccountRepositoryTest {
 	public void EditAccountTest()
 	{
 		String expected = repo.editAccount(1L, "{\"firstName\":\"Peter\",\"secondName\":\"NotPan\"}");
-		String actual = "Account Updated";
+		String actual = "{\"message\":\"account updated\"}";
 		Assert.assertEquals(expected, actual);
 	}
 	
@@ -73,7 +73,7 @@ public class AccountRepositoryTest {
 	public void removeAccountTest()
 	{
 		String actual = repo.removeAccount(1L);
-		String expected = "Account Removed From Database";
+		String expected = "{\"message\":\"account removed\"}";
 		Assert.assertEquals(actual, expected);
 	}
 

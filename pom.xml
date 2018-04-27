@@ -4,6 +4,13 @@
   <artifactId>account-application</artifactId>
   <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
+    
+    
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.4.1.RELEASE</version>
+    </parent>
   
 
 <properties>
@@ -17,6 +24,12 @@
     
     <dependencyManagement>
       <dependencies>
+      <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+      
+      
           <dependency>
               <groupId>org.wildfly.bom</groupId>
               <artifactId>wildfly-javaee7-with-tools</artifactId>
@@ -114,6 +127,10 @@
             name given to the generated WAR, and hence the context root) -->
         <finalName>${project.artifactId}</finalName>
         <plugins>
+         <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>${version.war.plugin}</version>

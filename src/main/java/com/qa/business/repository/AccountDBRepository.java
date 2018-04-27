@@ -46,7 +46,7 @@ public class AccountDBRepository implements IAccountRepository {
 	{
 		Account newAccount = jSON.getObjectforJSON(account, Account.class);
 		em.persist(newAccount);
-		return "Account added";
+		return "{\"message\":\"account added\"}";
 		
 	}
 	
@@ -60,7 +60,7 @@ public class AccountDBRepository implements IAccountRepository {
 			findAcc = updateAccount;
 			em.merge(findAcc);
 		}
-		return "Account Updated";
+		return "{\"message\":\"account updated\"}";
 	}
 	
 	@Override
@@ -71,7 +71,7 @@ public class AccountDBRepository implements IAccountRepository {
 		{
 			em.remove(deleteAccount);
 		}
-		return "Account Removed From Database";
+		return "{\"message\":\"account removed\"}";
 		
 	}
 	
