@@ -14,7 +14,7 @@ public class Account {
 	@Id 
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(length =4, name ="ACCOUNT_NUMBER")
-	private Long accountNumber;
+	private Long id;
 	
 	@Column(length = 50, name="FIRST_NAME")
 	private String firstName;
@@ -22,21 +22,22 @@ public class Account {
 	@Column(length = 50, name="LAST_NAME")
 	private String lastName;
 	
-	@Column(length = 4, name = "altAccountNumber")
-	private int altAccountNumber;
-	
 	public Account() 
 	{}
 	
-	public Account(String firstName, String lastName, int altAccountNumber)
+	public Account(String firstName, String lastName)
 	{
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.altAccountNumber = altAccountNumber;
 	}
 
+	
+	public Long getId() {
+		return id;
+	}
+	
 	public Long accountNumber() {
-		return accountNumber;
+		return id;
 	}
 
 	public String getFirstName() {
@@ -55,11 +56,4 @@ public class Account {
 		this.lastName = lastName;
 	}
 
-	public int getAltAccNumber() {
-		return altAccountNumber;
-	}
-
-	public void setAltAccNumber(int altAccountNumber) {
-		this.altAccountNumber = altAccountNumber;
-	}
 }

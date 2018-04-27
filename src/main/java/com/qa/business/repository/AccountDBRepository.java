@@ -52,9 +52,9 @@ public class AccountDBRepository implements IAccountRepository {
 	
 	@Override
 	@Transactional(REQUIRED)
-	public String editAccount(int altAccountNumber, String update) {
+	public String editAccount(Long id, String update) {
 		Account updateAccount = jSON.getObjectforJSON(update, Account.class);
-		Account findAcc = findAccount(altAccountNumber);
+		Account findAcc = findAccount(id);
 		if (update != null)
 		{
 			findAcc = updateAccount;
@@ -65,8 +65,8 @@ public class AccountDBRepository implements IAccountRepository {
 	
 	@Override
 	@Transactional(REQUIRED)
-	public String removeAccount(int altAccountNumber) {
-		Account deleteAccount = findAccount(altAccountNumber);
+	public String removeAccount(Long id) {
+		Account deleteAccount = findAccount(id);
 		if (deleteAccount != null)
 		{
 			em.remove(deleteAccount);
@@ -75,9 +75,9 @@ public class AccountDBRepository implements IAccountRepository {
 		
 	}
 	
-	public Account findAccount(int altAccountNumber) 
+	public Account findAccount(Long id) 
 	{
-		return em.find(Account.class, altAccountNumber);
+		return em.find(Account.class, id);
 	}
 	
 	public void manager(EntityManager em) 

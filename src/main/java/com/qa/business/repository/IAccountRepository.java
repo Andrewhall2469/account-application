@@ -6,8 +6,8 @@ public interface IAccountRepository {
 	
 	String createAccount(String Account);
 	
-	String editAccount(int altAccountNumber, String update);
+	String editAccount(Long id, String update);
 	
-	String removeAccount(int altAccountNumber);
+	String removeAccount(Long id);
 
 }

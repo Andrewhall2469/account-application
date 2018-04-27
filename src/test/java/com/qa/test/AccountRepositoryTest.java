@@ -1,3 +1,5 @@
+package com.qa.test;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,9 +46,9 @@ public class AccountRepositoryTest {
 	{
 		Mockito.when(em.createQuery(Mockito.anyString())).thenReturn(query);
 		List<Account> testAccounts = new ArrayList<Account>();
-		testAccounts.add(new Account("Peter", "Pan", 1001));
+		testAccounts.add(new Account("Peter", "Pan"));
 		Mockito.when(query.getResultList()).thenReturn(testAccounts);
-		String expected = "[{\"firstName\":\"Peter\",\"lastName\":\"Pan\",\"altAccountNumber\":1001}]";
+		String expected = "[{\"firstName\":\"Peter\",\"lastName\":\"Pan\"}]";
 		String actual = repo.getAllAccounts();
 		Assert.assertEquals(expected, actual);
 	}
@@ -54,7 +56,7 @@ public class AccountRepositoryTest {
 	@Test
 	public void createAccountTest()
 	{
-		String expected = repo.createAccount("{\"firstName\":\"Peter\",\"secondName\":\"Pan\",\"altAccountNumber\":1001}");
+		String expected = repo.createAccount("{\"firstName\":\"Peter\",\"secondName\":\"Pan\",\"id\":1001}");
 		String actual = "Account added";
 		Assert.assertEquals(actual, expected);
 	}
@@ -62,7 +64,7 @@ public class AccountRepositoryTest {
 	@Test
 	public void EditAccountTest()
 	{
-		String expected = repo.editAccount(1001, "{\"firstName\":\"Peter\",\"secondName\":\"NotPan\"}");
+		String expected = repo.editAccount(1L, "{\"firstName\":\"Peter\",\"secondName\":\"NotPan\"}");
 		String actual = "Account Updated";
 		Assert.assertEquals(expected, actual);
 	}
@@ -70,7 +72,7 @@ public class AccountRepositoryTest {
 	@Test
 	public void removeAccountTest()
 	{
-		String actual = repo.removeAccount(1001);
+		String actual = repo.removeAccount(1L);
 		String expected = "Account Removed From Database";
 		Assert.assertEquals(actual, expected);
 	}
